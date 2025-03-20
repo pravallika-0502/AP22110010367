@@ -1,25 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import TopUsers from "./pages/TopUser";
+import TrendingPosts from "./pages/TrendingPosts";
+import Feed from "./pages/Feed";
+import "./styles/global.css";  // Custom global CSS
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className="app">
+        <header className="header">
+          <h1>Social Media Analytics</h1>
+          <p>Real-Time User Behavior Insights</p>
+        </header>
+
+        <main className="main-content">
+          <Routes>
+            <Route path="/" element={<Feed />} />
+            <Route path="/top-users" element={<TopUsers />} />
+            <Route path="/trending-posts" element={<TrendingPosts />} />
+          </Routes>
+        </main>
+      </div>
+    </Router>
   );
-}
+};
 
 export default App;
